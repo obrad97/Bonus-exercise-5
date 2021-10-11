@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: rgb(0, 115, 255);
+    height: 100vh;
+}
+.container {
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.photos-grid {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: minmax(25px, auto);
+}
+
+.photo-item {
+    padding: 10px;
+    background: white;
+}
+
+.photo img {
+    width: 100%;
+}
+
+.avatar-name-likes {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.name a {
+    text-decoration: none;
+    color: black;
+}
+.likes-download {
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+}
+
+.likes-download p {
+    margin-left: 10px;
+}
+
+.likes-img {
+    width: 25px;
+    height: 25px;
+}
+
+.downloads-img {
+    margin-left: 1px;
+    width: 22px;
+    height: 22px;
+}
+
+.info-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-bottom img {
+    width: 20px;
+    height: 20px;
+}
+
+.info-bottom div {
+    display: flex;
+    align-items: center;
+}
+
+.info-bottom a {
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+#loader{
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loader img {
+    width: 100px;
+}
+
+.active {
+    display: block !important;
+}
+
+.bottom-loader {
+    position: static;
+    transform: unset;
+}
