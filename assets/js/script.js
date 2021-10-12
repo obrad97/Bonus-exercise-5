@@ -1,6 +1,7 @@
 const photoContainer = document.querySelector('.photos-grid');
-const columns = document.querySelectorAll('.column');
 const button = document.getElementById('btn');
+const tiwtterURL = "https://twitter.com/";
+const instagramURL = "https://www.instagram.com/";
 const loader = document.querySelector('#loader');
 const apiURL = "https://api.unsplash.com";
 const acessKey = "783f46460ebede7f21f34b84eb80206e27d042af75812821ffbcd17828afee3f";
@@ -30,52 +31,49 @@ const getPhotos = async ()=> {
 }
 
 const displayPhotos = (photos) => {
-    photos.forEach((photo, index) => {
+    photos.forEach((photo) => {
         console.log(photo);
         const element = document.createElement('div');
         element.classList.add('photo-item');
+        const checkIfNull = (param) => {
+            if (param == null){
+                return "Not available"
+            }else {
+                return param
+            }
+        }
         element.innerHTML = 
         `<div class="photo">
-        <img
-            src="${photo.urls.regular}"
-            alt=""
-        />
-    </div>
-    <div class="info">
-        <div class="info-top">
-            <div class="avatar-name-likes">
-                <img
-                    class="avatar"
-                    src="images/futuristic-city-sunset-wallpaper.jpg"
-                />
+            <a href="${photo.links.html}" target="_blank">
+            <img src="${photo.urls.regular}" alt="${photo.alt_description}"/></a>
+            </div>
+            <div class="info">
+                <div class="info-top">
+                    <div class="avatar-name-likes">
+                        <a href="${photo.user.links.html}" target="_blank"><img class="avatar" src="${photo.user.profile_image.large}" alt="user-img"/></a>
                 <div class="name">
-                    <h3>John Doe</h3>
-                    <a href="#">username</a>
+                    <h3>${photo.user.first_name} ${photo.user.last_name}</h3>
+                    <a href="${photo.user.links.html}" target="_blank">@${photo.user.username}</a>
                 </div>
                 <div class="likes-download">
                     <img
                         class="likes-img"
                         src="images/heart.svg"
+                        alt="likes-icon"
                     />
-                    <p class="likes">123</p>
+                    <p class="likes">${photo.likes}</p>
                     <img
                         class="downloads-img"
                         src="images/download.svg"
+                        alt="downloads-icon"
                     />
-                    <p class="downloads">123</p>
+                    <p class="downloads">${photo.downloads}</p>
                 </div>
             </div>
         </div>
         <div class="info-mid">
             <p class="bio-head">Bio</p>
-            <p class="bio">
-                Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Dolorem saepe amet aspernatur
-                sint. Itaque dolores ipsum ipsa atque
-                voluptatibus consequatur tempore incidunt quos
-                molestias? Reiciendis esse totam fuga ipsam
-                illum.
-            </p>
+            <p class="bio">${checkIfNull(photo.user.bio)}</p>
         </div>
         <div class="info-bottom">
             <div class="instagram">
@@ -83,30 +81,37 @@ const displayPhotos = (photos) => {
                     class="instagram-ico"
                     src="images/instagram.svg"
                 />
-                <a href="#" class="instagram-link">instagram</a>
+                <a 
+                ${(photo.user.instagram_username == null)?
+                    'style="color:black;"'
+                    : 'href="'+instagramURL+photo.user.instagram_username+'" target="_blank"'} 
+                    class="twitter-link">${checkIfNull(photo.user.instagram_username)} 
+                </a>
             </div>
             <div class="twitter">
                 <img
                     class="twitter-ico"
                     src="images/twitter.svg"
                 />
-                <a href="#" class="twitter-link">twitter</a>
+                <a 
+                ${(photo.user.twitter_username == null)? 
+                    'style="color:black;"' 
+                    : 'href="'+tiwtterURL+photo.user.twitter_username+'" target="_blank"'} 
+                    class="twitter-link">${checkIfNull(photo.user.twitter_username)}
+                </a>
             </div>
             <div class="portfolio">
                 <img
                     class="portfolio-ico"
                     src="images/portfolio.svg"
                 />
-                <a href="#" class="portfolio-link">portfolio</a>
+                <a ${(photo.user.portfolio_url == null)? 'style="color:black;"'
+                    : 'href="'+photo.user.portfolio_url+'" target="_blank"'}
+                class="portfolio-link">${(photo.user.portfolio_url == null)? "Not available" : 'Portfolio'}</a>
             </div>
         </div>
     </div>`
-        
-        if (index > 3){
-            columns[index-4].appendChild(element);
-        }else {
-            columns[index].appendChild(element);
-        }
+        photoContainer.appendChild(element);
     });
 }
 
@@ -116,8 +121,10 @@ button.addEventListener('click', (e)=> {
     setTimeout(function() {
         getPhotos();
         hideLoader();
-        button.style.display = 'block';
     }, 1500)
+    setTimeout(() => {
+        button.style.display = 'block';
+    }, 2000);
 })
 
 getPhotos();

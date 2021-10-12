@@ -14,32 +14,40 @@ body {
 }
 
 .photos-grid {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    grid-auto-rows: minmax(25px, auto);
     width: 100%;
-}
-
-.column {
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
 }
 
 .photo-item {
     margin: 5px;
     padding: 10px;
     background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo {
+    margin-bottom: 10px;
 }
 
 .photo img {
     width: 100%;
 }
 
+.info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+
 .avatar-name-likes {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
@@ -48,14 +56,19 @@ body {
     height: 60px;
     border-radius: 50%;
     margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.name{
+    margin-right: auto;
+    margin-bottom: 10px;
 }
 
 .name a {
     text-decoration: none;
-    color: black;
+    color: rgb(0, 115, 255);
 }
 .likes-download {
-    margin-left: auto;
     display: grid;
     grid-row-gap: 3px;
     grid-template-columns: auto auto;
@@ -76,18 +89,26 @@ body {
 }
 
 .info-mid {
+    margin-top: auto;
     margin-bottom: 20px;
 }
 
 .bio-head {
     font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.bio {
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 .info-bottom {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     border-top: 1px solid rgba(0, 115, 255, 0.4);
-    padding: 20px 0;    
+    padding-bottom: 20px; 
 }
 
 .info-bottom img {
@@ -98,11 +119,19 @@ body {
 .info-bottom div {
     display: flex;
     align-items: center;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.portfolio {
+    margin-right: 0 !important;
 }
 
 .info-bottom a {
     text-decoration: none;
     margin-left: 10px;
+    color: rgb(0, 115, 255);
+    align-self: flex-end;
 }
 
 #loader{
