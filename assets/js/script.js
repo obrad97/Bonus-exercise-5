@@ -118,7 +118,7 @@ const displayPhotos = (photos) => {
 button.addEventListener('click', (e)=> {
     button.style.display = 'none';
     loader.classList.add('bottom-loader');
-    setTimeout(function() {
+    setTimeout(() => {
         getPhotos();
         hideLoader();
     }, 1500)
