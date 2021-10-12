@@ -5,152 +5,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;500&display=swap"
+            rel="stylesheet"
+        />
         <title>Infinite scroll</title>
     </head>
     <body>
         <div class="container">
             <div class="photos-grid">
-                <div class="photo-item">
-                    <div class="photo">
-                        <img
-                            src="images/futuristic-city-sunset-wallpaper.jpg"
-                            alt=""
-                        />
-                    </div>
-                    <div class="info">
-                        <div class="info-top">
-                            <div class="avatar-name-likes">
-                                <img
-                                    class="avatar"
-                                    src="images/futuristic-city-sunset-wallpaper.jpg"
-                                />
-                                <div class="name">
-                                    <h3>John Doe</h3>
-                                    <a href="#">username</a>
-                                </div>
-                                <div class="likes-download">
-                                    <img
-                                        class="likes-img"
-                                        src="images/heart.png"
-                                    />
-                                    <p class="likes">123</p>
-                                    <img
-                                        class="downloads-img"
-                                        src="images/down-arrow.png"
-                                    />
-                                    <p class="downloads">123</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info-mid">
-                            <p class="bio-head">Bio:</p>
-                            <p class="bio">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Dolorem saepe amet aspernatur
-                                sint. Itaque dolores ipsum ipsa atque
-                                voluptatibus consequatur tempore incidunt quos
-                                molestias? Reiciendis esse totam fuga ipsam
-                                illum.
-                            </p>
-                        </div>
-                        <div class="info-bottom">
-                            <div class="instagram">
-                                <img
-                                    class="instagram-ico"
-                                    src="images/instagram.png"
-                                />
-                                <a href="#" class="instagram-link">instagram</a>
-                            </div>
-                            <div class="twitter">
-                                <img
-                                    class="twitter-ico"
-                                    src="images/twitter.png"
-                                />
-                                <a href="#" class="instagram-link">twitter</a>
-                            </div>
-                            <div class="portfolio">
-                                <img
-                                    class="portfolio-ico"
-                                    src="images/portfolio.png"
-                                />
-                                <a href="#" class="instagram-link">portfolio</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="photo-item">
-                    <div class="photo">
-                        <img
-                            src="images/futuristic-city-sunset-wallpaper.jpg"
-                            alt=""
-                        />
-                    </div>
-                    <div class="info">
-                        <div class="avatar-and username"></div>
-                    </div>
-                </div>
-
-                <div class="photo-item">
-                    <div class="photo">
-                        <img
-                            src="images/futuristic-city-sunset-wallpaper.jpg"
-                            alt=""
-                        />
-                    </div>
-                    <div class="info">
-                        <div class="avatar-and username"></div>
-                    </div>
-                </div>
-
-                <div class="photo-item">
-                    <div class="photo">
-                        <img
-                            src="images/futuristic-city-sunset-wallpaper.jpg"
-                            alt=""
-                        />
-                    </div>
-                    <div class="info">
-                        <div class="avatar-and username"></div>
-                    </div>
-                </div>
-
-                <div class="photo-item">
-                    <div class="photo">
-                        <img
-                            src="images/futuristic-city-sunset-wallpaper.jpg"
-                            alt=""
-                        />
-                    </div>
-                    <div class="info">
-                        <div class="avatar-and username"></div>
-                    </div>
-                </div>
-
-                <div class="photo-item">
-                    <div class="photo">
-                        <img
-                            src="images/futuristic-city-sunset-wallpaper.jpg"
-                            alt=""
-                        />
-                    </div>
-                    <div class="info">
-                        <div class="avatar-and username"></div>
-                    </div>
-                </div>
-
-                <div class="photo-item">
-                    <div class="photo">
-                        <img
-                            src="images/futuristic-city-sunset-wallpaper.jpg"
-                            alt=""
-                        />
-                    </div>
-                    <div class="info">
-                        <div class="avatar-and username"></div>
-                    </div>
-                </div>
+                <div class="column"></div>
+                <div class="column"></div>
+                <div class="column"></div>
+                <div class="column"></div>
             </div>
+            <button id="btn" type="button">Load more</button>
             <div id="loader">
                 <img src="images/Blocks-1s-200px copy.gif" alt="loader" />
             </div>

@@ -5,23 +5,30 @@
 }
 body {
     background: rgb(0, 115, 255);
-    height: 100vh;
+    font-family: 'Spartan', sans-serif;
 }
 .container {
-    width: 1000px;
-    height: 100%;
     margin: 0 auto;
     position: relative;
+    padding-bottom: 30px;
 }
 
 .photos-grid {
-    display: grid;
-    grid-gap: 8px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-rows: minmax(25px, auto);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.column {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .photo-item {
+    margin: 5px;
     padding: 10px;
     background: white;
 }
@@ -50,9 +57,10 @@ body {
 .likes-download {
     margin-left: auto;
     display: grid;
+    grid-row-gap: 3px;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .likes-download p {
@@ -60,19 +68,26 @@ body {
 }
 
 .likes-img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
 }
 
 .downloads-img {
-    margin-left: 1px;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+}
+
+.info-mid {
+    margin-bottom: 20px;
+}
+
+.bio-head {
+    font-size: 20px;
 }
 
 .info-bottom {
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid rgba(0, 115, 255, 0.4);
+    padding: 20px 0;    
 }
 
 .info-bottom img {
@@ -91,6 +106,7 @@ body {
 }
 
 #loader{
+    margin-top: 50px;
     display: none;
     position: absolute;
     text-align: center;
@@ -108,6 +124,13 @@ body {
 }
 
 .bottom-loader {
-    position: static;
-    transform: unset;
+    display: block !important;
+    top: unset !important;
+}
+
+#btn {
+    margin: 30px auto 0 auto;
+    display: block;
+    height: 50px;
+    width: 150px;
 }
