@@ -1,12 +1,28 @@
 const photoContainer = document.querySelector('.photos-grid');
 const button = document.getElementById('btn');
+const gridView = document.getElementById('grid-view');
+const listView = document.getElementById('list-view');
 const tiwtterURL = "https://twitter.com/";
 const instagramURL = "https://www.instagram.com/";
 const loader = document.querySelector('#loader');
 const apiURL = "https://api.unsplash.com";
-const acessKey = "783f46460ebede7f21f34b84eb80206e27d042af75812821ffbcd17828afee3f";
+const acessKey = "7af4fbd7b2d9792e76b52df48195b739567943bd8cccda6792e96c4c68e71a49";
 /*my key RY7ItKwWONfZFG_AiVHiYcQVnJGhuER_9WDRd0zfunQ  random key1-7af4fbd7b2d9792e76b52df48195b739567943bd8cccda6792e96c4c68e71a49 random key2-783f46460ebede7f21f34b84eb80206e27d042af75812821ffbcd17828afee3f*/
 const count = 8;
+
+listView.addEventListener('click', ()=> {
+    photoContainer.classList.add('photos-list');
+})
+
+gridView.addEventListener('click', ()=> {
+    photoContainer.classList.remove('photos-list');
+})
+
+window.addEventListener('resize', ()=> {
+    if (window.innerWidth < 850){
+        photoContainer.classList.remove('photos-list');
+    }
+})
 
 const displayLoader = () => {
     loader.classList.add('active');
@@ -49,31 +65,31 @@ const displayPhotos = (photos) => {
             </div>
             <div class="info">
                 <div class="info-top">
-                    <div class="avatar-name-likes">
+                    <div class="avatar-name">
                         <a href="${photo.user.links.html}" target="_blank"><img class="avatar" src="${photo.user.profile_image.large}" alt="user-img"/></a>
                 <div class="name">
                     <h3>${photo.user.first_name} ${photo.user.last_name}</h3>
                     <a href="${photo.user.links.html}" target="_blank">@${photo.user.username}</a>
                 </div>
-                <div class="likes-download">
-                    <img
-                        class="likes-img"
-                        src="images/heart.svg"
-                        alt="likes-icon"
-                    />
-                    <p class="likes">${photo.likes}</p>
-                    <img
-                        class="downloads-img"
-                        src="images/download.svg"
-                        alt="downloads-icon"
-                    />
-                    <p class="downloads">${photo.downloads}</p>
-                </div>
+                
             </div>
         </div>
         <div class="info-mid">
-            <p class="bio-head">Bio</p>
-            <p class="bio">${checkIfNull(photo.user.bio)}</p>
+            <p class="bio">${(photo.user.bio == null)? "No bio available" : photo.user.bio}</p>
+            <div class="likes-download">
+                    <div class="likes">
+                        <img class="likes-img" src="images/heart.svg" alt="likes-icon"/>
+                        <p>${photo.likes}</p>
+                    </div>
+                    <div class="downloads">
+                        <img class="downloads-img" src="images/download.svg" alt="downloads-icon"/>
+                        <p>${photo.downloads}</p>
+                    </div>
+                    <div class="views">
+                        <img class="views-img" src="images/eye.svg" alt="views-icon"/>
+                        <p>${photo.views}</p>
+                    </div>
+                </div>
         </div>
         <div class="info-bottom">
             <div class="instagram">
