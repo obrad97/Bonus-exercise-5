@@ -10,6 +10,12 @@ const acessKey = "7af4fbd7b2d9792e76b52df48195b739567943bd8cccda6792e96c4c68e71a
 /*my key RY7ItKwWONfZFG_AiVHiYcQVnJGhuER_9WDRd0zfunQ  random key1-7af4fbd7b2d9792e76b52df48195b739567943bd8cccda6792e96c4c68e71a49 random key2-783f46460ebede7f21f34b84eb80206e27d042af75812821ffbcd17828afee3f*/
 const count = 8;
 
+window.addEventListener('load', ()=> {
+    setTimeout(() => {
+        button.style.display = "flex"
+    }, 1500);
+})
+
 listView.addEventListener('click', ()=> {
     photoContainer.classList.add('photos-list');
 })
