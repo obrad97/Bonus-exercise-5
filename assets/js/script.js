@@ -2,19 +2,15 @@ const photoContainer = document.querySelector('.photos-grid');
 const button = document.getElementById('btn');
 const gridView = document.getElementById('grid-view');
 const listView = document.getElementById('list-view');
+const lightBox = document.getElementById('lightbox');
+const lightBoxImg = document.getElementById('lightbox-img');
+const loader = document.querySelector('#loader');
 const tiwtterURL = "https://twitter.com/";
 const instagramURL = "https://www.instagram.com/";
-const loader = document.querySelector('#loader');
 const apiURL = "https://api.unsplash.com";
-const acessKey = "7af4fbd7b2d9792e76b52df48195b739567943bd8cccda6792e96c4c68e71a49";
+const acessKey = "783f46460ebede7f21f34b84eb80206e27d042af75812821ffbcd17828afee3f";
 /*my key RY7ItKwWONfZFG_AiVHiYcQVnJGhuER_9WDRd0zfunQ  random key1-7af4fbd7b2d9792e76b52df48195b739567943bd8cccda6792e96c4c68e71a49 random key2-783f46460ebede7f21f34b84eb80206e27d042af75812821ffbcd17828afee3f*/
 const count = 8;
-
-window.addEventListener('load', ()=> {
-    setTimeout(() => {
-        button.style.display = "flex"
-    }, 1500);
-})
 
 listView.addEventListener('click', ()=> {
     photoContainer.classList.add('photos-list');
@@ -33,10 +29,11 @@ window.addEventListener('resize', ()=> {
 const displayLoader = () => {
     loader.classList.add('active');
 }
+
 const hideLoader = () => {
-    loader.classList.remove('active');
-    loader.classList.remove('bottom-loader');
+    loader.classList.add('bottom-loader');
 }
+
 const getPhotos = async ()=> {
     displayLoader()
     let photos = [];
@@ -65,9 +62,8 @@ const displayPhotos = (photos) => {
             }
         }
         element.innerHTML = 
-        `<div class="photo">
-            <a href="${photo.links.html}" target="_blank">
-            <img src="${photo.urls.regular}" alt="${photo.alt_description}"/></a>
+            `<div class="photo">
+                <img class="main-img" src="${photo.urls.regular}" alt="${(photo.alt_description == null)? "image not found" : photo.alt_description}"/></a>
             </div>
             <div class="info">
                 <div class="info-top">
@@ -134,19 +130,38 @@ const displayPhotos = (photos) => {
         </div>
     </div>`
         photoContainer.appendChild(element);
-    });
+
+        const mainImg = document.querySelectorAll('.main-img');
+        mainImg.forEach((image)=> {
+            image.addEventListener('click', ()=>{
+                openLightBox(image.getAttribute('src'));
+            })
+        })
+    })
 }
 
-button.addEventListener('click', (e)=> {
-    button.style.display = 'none';
-    loader.classList.add('bottom-loader');
-    setTimeout(() => {
-        getPhotos();
-        hideLoader();
-    }, 1500)
-    setTimeout(() => {
-        button.style.display = 'block';
-    }, 2000);
+const openLightBox = (imgURL) => {
+    lightBox.classList.add('lightbox-active');
+    lightBoxImg.src = imgURL;
+    document.body.style.overflow = 'hidden';
+}
+
+lightBox.addEventListener('click', (event)=> {
+    if(event.target != event.currentTarget){
+        return
+    }else{
+        lightBox.classList.remove('lightbox-active');
+        document.body.style.overflow = 'auto';
+    }
+})
+
+window.addEventListener('scroll', ()=> {
+    if (window.innerHeight + window.pageYOffset === document.documentElement.offsetHeight){
+        setTimeout(() => {
+            hideLoader();
+            getPhotos();
+        }, 1000);
+    }
 })
 
 getPhotos();

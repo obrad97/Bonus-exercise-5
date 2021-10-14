@@ -81,6 +81,7 @@ body {
 
 .photo {
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .photo img {
@@ -218,7 +219,10 @@ body {
 
 .bottom-loader {
     display: block !important;
+    position: static !important;
     top: unset !important;
+    margin: 0 auto;
+    transform: unset !important;
 }
 
 #btn {
@@ -240,6 +244,30 @@ body {
     background: rgb(0, 115, 255);
     color: #FFFFFF;
 }
+
+#lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.8);;
+}
+
+.lightbox-active {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-img {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 10px;
+}
+
 
 @media only screen and (max-width:850px) {
     .container {
