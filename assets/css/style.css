@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: rgb(0, 115, 255);
+    font-family: 'Spartan', sans-serif;
+}
+.container {
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 30px;
+    padding: 0 20px 30px 20px;
+}
+
+.view-change {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    margin: 40px 0;
+    padding-right: 20px;
+}
+
+.view-change path {
+    fill: #FFFFFF;
+}
+
+.view {
+    margin-top: 3px;
+    margin-right: 10px;
+}
+
+#grid-view{
+    cursor: pointer;
+    text-align: center;
+    margin-right: 20px;
+}
+
+#list-view {
+    cursor: pointer;
+    text-align: center;
+}
+
+.photos-list {
+    display: flex !important;
+    flex-direction: column;
+}
+
+.photos-list .photo-item {
+    flex-direction: row;
+    height: 400px;
+}
+
+.photos-list .photo-item .photo {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.photos-grid {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    grid-auto-rows: minmax(25px, auto);
+    width: 100%;
+    height: 100%;
+}
+
+.photo-item {
+    margin: 5px;
+    padding: 10px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.photo img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+    padding: 10px;
+}
+
+.avatar-name {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.name{
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.name a {
+    text-decoration: none;
+    color: rgb(0, 115, 255);
+}
+
+.info-mid {
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.bio-head {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.bio {
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-bottom: 20px;
+}
+
+.likes-download {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 115, 255, 0.4);
+    border-bottom: 1px solid rgba(0, 115, 255, 0.4);
+    padding: 15px 0;
+}
+
+.likes-download div {
+    display: flex;
+    align-items: center;
+}
+
+.likes-download p {
+    margin-top: 2px;
+    margin-left: 10px;
+}
+
+.likes-img {
+    width: 20px;
+}
+
+.downloads-img {
+    width: 20px;
+}
+
+.info-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 10px; 
+}
+
+.info-bottom img {
+    width: 20px;
+    height: 20px;
+}
+
+.info-bottom div {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.info-bottom a {
+    text-decoration: none;
+    margin-left: 10px;
+    color: rgb(0, 115, 255);
+    align-self: flex-end;
+}
+
+.info-bottom img {
+    margin-bottom: 2px;
+}
+
+.portfolio {
+    margin-right: 0 !important;
+}
+
+#loader{
+    margin-top: 50px;
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loader img {
+    width: 100px;
+}
+
+.active {
+    display: block !important;
+}
+
+.bottom-loader {
+    display: block !important;
+    position: static !important;
+    top: unset !important;
+    margin: 0 auto;
+    transform: unset !important;
+}
+
+#btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto 0 auto;
+    height: 50px;
+    width: 150px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Spartan', sans-serif;
+
+}
+
+#btn:hover {
+    cursor: pointer;
+    border: 2px solid #FFFFFF;
+    background: rgb(0, 115, 255);
+    color: #FFFFFF;
+}
+
+#lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.8);;
+}
+
+.lightbox-active {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-img {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 10px;
+}
+
+
+@media only screen and (max-width:850px) {
+    .container {
+        padding: 30px 10px 30px 10px; 
+    }
+    
+    .view-change {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:400px) {
+    .container {
+        padding: 30px 0 30px 0;
+    }
+}
+
